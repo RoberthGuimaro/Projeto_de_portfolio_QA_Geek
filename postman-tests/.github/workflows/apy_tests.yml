@@ -1,0 +1,12 @@
+name: Testes Mínimos do CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apenas um Passo Vazio
+        run: echo "O workflow está funcionando!"

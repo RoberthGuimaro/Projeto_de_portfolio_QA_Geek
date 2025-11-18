@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "b01bd3f0-c5eb-4938-a642-daa4b46c4cf2",
+		"name": "Kitsu - Testes Exploratórios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27180280"
+	},
+	"item": [
+		{
+			"name": "0 - Pesquisa e Descoberta",
+			"item": [
+				{
+					"name": "0 - Busca Anime por Texto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?filter[text]={{searchTerm}}",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "filter[text]",
+									"value": "{{searchTerm}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Busca Anime por Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?filter[slug]={{slugAnime}}",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "filter[slug]",
+									"value": "{{slugAnime}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Busca Anime por Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?filter[status]=finished",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "filter[status]",
+									"value": "finished"
+								}
+							]
+						},
+						"description": "Essa requisição possue multiplas entradas.  \n  \ncurrent\n\nfinished\n\ntba\n\nunreleased"
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Busca Anime por Temporada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?filter[season]=winter&filter[seasonYear]=2025",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "filter[season]",
+									"value": "winter"
+								},
+								{
+									"key": "filter[seasonYear]",
+									"value": "2025"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Busca Anime por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}/{{animeId}}",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"path": [
+								"{{animeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Ordena Anime por Avaliação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?sort=-averageRating&page[limit]=10",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "-averageRating"
+								},
+								{
+									"key": "page[limit]",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 - Paginação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?page[limit]=5&page[offset]=0",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "page[limit]",
+									"value": "5"
+								},
+								{
+									"key": "page[offset]",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1 - Relacionamentos",
+			"item": [
+				{
+					"name": "0 - Listar Categorias de Animes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}/{{animeId}}/categories",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"path": [
+								"{{animeId}}",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Listar por Episódios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}/{{animeId}}/episodes",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"path": [
+								"{{animeId}}",
+								"episodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Informações Completas com Relacionamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}/{{animeId}}?filter[text]={{searchTerm}}&include=categories",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"path": [
+								"{{animeId}}"
+							],
+							"query": [
+								{
+									"key": "filter[text]",
+									"value": "{{searchTerm}}"
+								},
+								{
+									"key": "include",
+									"value": "categories"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2 - Pesquisa e Consulta",
+			"item": [
+				{
+					"name": "0 - Busca Manga por Texto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuManga}}?filter[text]={{searchTerm}}",
+							"host": [
+								"{{baseUrlKitsuManga}}"
+							],
+							"query": [
+								{
+									"key": "filter[text]",
+									"value": "{{searchTerm}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Detalhes de Manga por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuManga}}/{{animeId}}",
+							"host": [
+								"{{baseUrlKitsuManga}}"
+							],
+							"path": [
+								"{{animeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Listar Capítulos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnimeManga}}/{{animeId}}/chapters",
+							"host": [
+								"{{baseUrlKitsuAnimeManga}}"
+							],
+							"path": [
+								"{{animeId}}",
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3 - Descoberta Geral",
+			"item": [
+				{
+					"name": "0 - Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsu}}/categories",
+							"host": [
+								"{{baseUrlKitsu}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Gêneros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsu}}/genres",
+							"host": [
+								"{{baseUrlKitsu}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Trends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsu}}/trending/anime",
+							"host": [
+								"{{baseUrlKitsu}}"
+							],
+							"path": [
+								"trending",
+								"anime"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4 - Utilidades - Testes JSON:API",
+			"item": [
+				{
+					"name": "0 - Sparse Fieldsets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?filter[text]={{searchTerm}}&fields[anime]=slug,canonicalTitle,averageRating",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "filter[text]",
+									"value": "{{searchTerm}}"
+								},
+								{
+									"key": "fields[anime]",
+									"value": "slug,canonicalTitle,averageRating"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Multiplos Includes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}/{{animeId}}?include=episodes,categories,genres",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"path": [
+								"{{animeId}}"
+							],
+							"query": [
+								{
+									"key": "include",
+									"value": "episodes,categories,genres"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Verifica Links de Paginação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlKitsuAnime}}?page[limit]=10&page[offset]=10",
+							"host": [
+								"{{baseUrlKitsuAnime}}"
+							],
+							"query": [
+								{
+									"key": "page[limit]",
+									"value": "10"
+								},
+								{
+									"key": "page[offset]",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"pm.request.headers.add({\r",
+					"    key: \"Accept\",\r",
+					"    value: \"application/vnd.api+json\"\r",
+					"});\r",
+					"\r",
+					"pm.request.headers.add({\r",
+					"    key: \"Content-Type\",\r",
+					"    value: \"application/vnd.api+json\"\r",
+					"});\r",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

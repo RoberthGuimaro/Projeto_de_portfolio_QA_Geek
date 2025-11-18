@@ -1,0 +1,893 @@
+{
+	"info": {
+		"_postman_id": "5af303d9-2dae-4a8a-9670-56f52d4e69b4",
+		"name": "Jikan - Testes QA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27180280"
+	},
+	"item": [
+		{
+			"name": "0 - Healt Check",
+			"item": [
+				{
+					"name": "HC - Top Anime",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/top/anime",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"top",
+								"anime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HC - Anime por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/anime/{{animeId}}",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"anime",
+								"{{animeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1 - Anime",
+			"item": [
+				{
+					"name": "0 - Detalhes",
+					"item": [
+						{
+							"name": "0 - Buscar por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Estatística por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/statistics",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"statistics"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Personagens por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/characters",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"characters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3 - Episódios por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/episodes",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"episodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4 - Recomendações por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/recommendations",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"recommendations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5 - Notícias por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/news",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"news"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "1 - Busca",
+					"item": [
+						{
+							"name": "0 - busca por Termo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime?q={{searchTerm}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "{{searchTerm}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Busca com Paginação",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime?q={{searchTerm}}&page={{page}}&limit={{limit}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "{{searchTerm}}"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}"
+										},
+										{
+											"key": "limit",
+											"value": "{{limit}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Busca com Filtros",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime?score=8&status=airing",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime"
+									],
+									"query": [
+										{
+											"key": "score",
+											"value": "8"
+										},
+										{
+											"key": "status",
+											"value": "airing"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "2 - Top",
+					"item": [
+						{
+							"name": "0 - Top geral",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/top/anime",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"top",
+										"anime"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Top por Tipo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/top/anime?type=tv",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"top",
+										"anime"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "tv"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Top por Popularidade",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/top/anime?filter=bypopularity",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"top",
+										"anime"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "bypopularity"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "3 - Episódios",
+					"item": [
+						{
+							"name": "0 - Listar Episódios",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/episodes",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"episodes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Detalhes de Episódio",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/episodes/{{episodeId}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"episodes",
+										"{{episodeId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Lista de Episódios + Paginação",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/anime/{{animeId}}/episodes?page={{page}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"anime",
+										"{{animeId}}",
+										"episodes"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "2 - Manga",
+			"item": [
+				{
+					"name": "0 - Detalhes",
+					"item": [
+						{
+							"name": "0 - Busca por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga/{{mangaId}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga",
+										"{{mangaId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Estatísticas por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga/{{mangaId}}/statistics",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga",
+										"{{mangaId}}",
+										"statistics"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Recomendações por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga/{{mangaId}}/recommendations",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga",
+										"{{mangaId}}",
+										"recommendations"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3 - Personagem por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga/{{mangaId}}/characters",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga",
+										"{{mangaId}}",
+										"characters"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "1 - Busca",
+					"item": [
+						{
+							"name": "0 - Busca por Termo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga?q={{searchTerm}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "{{searchTerm}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Busca com paginação",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga?q={{searchTerm}}&page={{page}}&limit={{limit}}",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "{{searchTerm}}"
+										},
+										{
+											"key": "page",
+											"value": "{{page}}"
+										},
+										{
+											"key": "limit",
+											"value": "{{limit}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Busca com Filtros",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/manga?status=publishing&type=manga",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"manga"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "publishing"
+										},
+										{
+											"key": "type",
+											"value": "manga"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "2 - Top",
+					"item": [
+						{
+							"name": "0 - Top Geral",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/top/manga",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"top",
+										"manga"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1 - Top por Popularidade",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/top/manga?filter=bypopularity",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"top",
+										"manga"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "bypopularity"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Top por Tipo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlJikan}}/top/manga?type=manhwa",
+									"host": [
+										"{{baseUrlJikan}}"
+									],
+									"path": [
+										"top",
+										"manga"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "manhwa"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "3 - Characters",
+			"item": [
+				{
+					"name": "1 - Character por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/characters/{{charactersID}}",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"characters",
+								"{{charactersID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Animes do Character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/characters/{{charactersID}}/anime",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"characters",
+								"{{charactersID}}",
+								"anime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Mangas do Character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/characters/{{charactersID}}/manga",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"characters",
+								"{{charactersID}}",
+								"manga"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Dubladores do Character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/characters/{{charactersID}}/voices",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"characters",
+								"{{charactersID}}",
+								"voices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Imagens do Character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/characters/{{charactersID}}/pictures",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"characters",
+								"{{charactersID}}",
+								"pictures"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4 - Users",
+			"item": [
+				{
+					"name": "0 - Vê Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/users",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Estatísitcas Gerais do User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/users/{{userValid}}/statistics",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"users",
+								"{{userValid}}",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Reviews do User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/users/{{userValid}}/reviews",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"users",
+								"{{userValid}}",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5 - Testes de Erros",
+			"item": [
+				{
+					"name": "0 - Anime Inexistente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/anime/999999",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"anime",
+								"999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1 - Busca sem Parâmetro (falha)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/anime?q=",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"anime"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Busca com Paginação Inválida (falha)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/anime?q=-1",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"anime"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Busca com Filtro Inválido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlJikan}}/anime?status=unknow",
+							"host": [
+								"{{baseUrlJikan}}"
+							],
+							"path": [
+								"anime"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "unknow"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
