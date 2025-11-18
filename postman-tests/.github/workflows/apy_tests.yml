@@ -1,12 +1,38 @@
-name: Testes Mínimos do CI
+name: Testes de API com Postman
 
 on:
   push:
-    branches: [ "main" ]
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  build:
+  run-postman-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Apenas um Passo Vazio
-        run: echo "O workflow está funcionando!"
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar Newman e Reporter
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+      - name: Executar testes Postman
+        run: |
+          newman run collections/jikan_testes_QA.postman_collection.json \
+            -e environments/jikan_kitsu_testing.postman_environment.json \
+            -e environments/kitsu_testes_exploratórios.postman_collection.json \
+            -r htmlextra \
+            --reporter-htmlextra-export reports/resultado.html
+
+      - name: Publicar Relatório
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorio-testes
+          path: reports/resultado.html
