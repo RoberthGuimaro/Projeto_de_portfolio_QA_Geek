@@ -23,16 +23,22 @@ jobs:
           npm install -g newman
           npm install -g newman-reporter-htmlextra
 
-      - name: Executar testes Postman
+      - name: Executar coleção Jikan
         run: |
           newman run collections/jikan_testes_QA.postman_collection.json \
             -e environments/jikan_kitsu_testing.postman_environment.json \
-            -e environments/kitsu_testes_exploratórios.postman_collection.json \
             -r htmlextra \
-            --reporter-htmlextra-export reports/resultado.html
+            --reporter-htmlextra-export reports/resultado_jikan.html
 
-      - name: Publicar Relatório
+      - name: Executar coleção Kitsu
+        run: |
+          newman run collections/kitsu_testes_exploratórios.postman_collection.json \
+            -e environments/jikan_kitsu_testing.postman_environment.json \
+            -r htmlextra \
+            --reporter-htmlextra-export reports/resultado_kitsu.html
+
+      - name: Publicar Relatórios
         uses: actions/upload-artifact@v3
         with:
-          name: relatorio-testes
-          path: reports/resultado.html
+          name: relatorios-testes
+          path: reports/
