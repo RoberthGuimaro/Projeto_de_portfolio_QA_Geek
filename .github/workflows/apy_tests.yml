@@ -25,20 +25,20 @@ jobs:
 
       - name: Executar coleção Jikan
         run: |
-          newman run collections/jikan_testes_QA.postman_collection.json \
-            -e environments/jikan_kitsu_testing.postman_environment.json \
+          newman run postman-tests/collections/jikan_testes_QA.postman_collection.json \
+            -e postman-tests/environments/jikan_kitsu_testing.postman_environment.json \
             -r htmlextra \
-            --reporter-htmlextra-export reports/resultado_jikan.html
+            --reporter-htmlextra-export postman-tests/reports/resultado_jikan.html
 
       - name: Executar coleção Kitsu
         run: |
-          newman run collections/kitsu_testes_exploratórios.postman_collection.json \
-            -e environments/jikan_kitsu_testing.postman_environment.json \
+          newman run postman-tests/collections/kitsu_testes_exploratórios.postman_collection.json \
+            -e postman-tests/environments/jikan_kitsu_testing.postman_environment.json \
             -r htmlextra \
-            --reporter-htmlextra-export reports/resultado_kitsu.html
+            --reporter-htmlextra-export postman-tests/reports/resultado_kitsu.html
 
       - name: Publicar Relatórios
         uses: actions/upload-artifact@v4
         with:
           name: relatorios-testes
-          path: reports/
+          path: postman-tests/reports/
