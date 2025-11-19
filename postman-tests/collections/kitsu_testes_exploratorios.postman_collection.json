@@ -275,9 +275,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrlKitsuAnimeManga}}/{{animeId}}/chapters",
+							"raw": "{{baseUrlKitsuManga}}/{{animeId}}/chapters",
 							"host": [
-								"{{baseUrlKitsuAnimeManga}}"
+								"{{baseUrlKitsuManga}}"
 							],
 							"path": [
 								"{{animeId}}",
