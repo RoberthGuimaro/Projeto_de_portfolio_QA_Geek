@@ -1,59 +1,62 @@
-name: Publish Newman Reports to GitHub Pages
+name: API Tests
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  run-tests:
+  run-api-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      - name: Install Newman and Reporter
-        run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
+    - name: Install Newman and Reporter
+      run: npm install -g newman newman-reporter-htmlextra
 
-      - name: Run Newman tests
-        run: |
-          newman run postman-tests/collections/kitsu_testes_exploratorios.postman_collection.json \
-            -e postman-tests/environments/jikan_kitsu_testing.postman_environment.json \
-            -r htmlextra \
-            --reporter-htmlextra-export postman-tests/reports/resultado_kitsu.html
+    - name: Run Jikan Tests
+      run: |
+        newman run postman-tests/collections/jikan_testes_QA.postman_collection.json \
+          -e postman-tests/environments/jikan_kitsu_testing.postman_environment.json \
+          -r htmlextra \
+          --reporter-htmlextra-export postman-tests/reports/resultado_jikan.html
 
-      - name: Prepare report for GitHub Pages
-        run: |
-          mkdir -p ./public
-          cp postman-tests/reports/resultado_kitsu.html ./public/index.html
+    - name: Run Kitsu Tests
+      run: |
+        newman run postman-tests/collections/kitsu_testes_exploratorios.postman_collection.json \
+          -e postman-tests/environments/jikan_kitsu_testing.postman_environment.json \
+          -r htmlextra \
+          --reporter-htmlextra-export postman-tests/reports/resultado_kitsu.html
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
+    - name: Prepare GitHub Pages folder
+      run: |
+        mkdir -p public
+        cp postman-tests/reports/resultado_jikan.html public/
+        cp postman-tests/reports/resultado_kitsu.html public/
+
+    - name: Upload artifact for GitHub Pages
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: public
 
   deploy:
-    needs: run-tests
+    needs: run-api-tests
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
