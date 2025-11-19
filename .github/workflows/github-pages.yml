@@ -42,8 +42,8 @@ jobs:
         cp postman-tests/reports/resultado_jikan.html public/
         cp postman-tests/reports/resultado_kitsu.html public/
 
-    - name: Upload artifact for GitHub Pages
-      uses: actions/upload-pages-artifact@v2
+    - name: Upload artifact to GitHub Pages
+      uses: actions/upload-pages-artifact@v3
       with:
         path: public
 
@@ -53,10 +53,7 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
